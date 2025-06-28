@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>প্রিয়তম কুইজ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #007BFF;
+    }
+    img.profile {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #007BFF;
+      margin-bottom: 10px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #007BFF;
+      color: white;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .option {
+      display: block;
+      margin: 10px 0;
+    }
+    #fb-link {
+      margin-top: 20px;
+      display: block;
+      font-size: 14px;
+      color: #007BFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 🖼️ প্রিয়তমের ছবি -->
+    <img src="your-image.jpg" alt="প্রিয়তম" class="profile" />
+    
+    <h1>প্রিয়তম কুইজ</h1>
+    <div id="quiz">
+      <button onclick="startQuiz()">GO</button>
+    </div>
+    <a id="fb-link" href="https://www.facebook.com/anik20069" target="_blank">আমার ফেসবুক</a>
+  </div>
+
+  <script>
+    const quizData = [
+      { question: "(10000000)₂ এর দশমিক মান কত?", options: ["255", "0", "128", "127"], answer: "128" },
+      { question: "2’s complement ব্যবহারে -54 প্রকাশ হবে—", options: ["00110110", "11001010", "10010010", "11001101"], answer: "11001010" },
+      { question: "বাংলা বর্ণমালা কোন কোডে অন্তর্ভুক্ত?", options: ["ASCII", "BCD", "UNICODE", "EBCDIC"], answer: "UNICODE" },
+      { question: "(10111)₂ = ?", options: ["15", "23", "22", "30"], answer: "23" },
+      { question: "AB₁₆ + BA₁₆ = ?", options: ["157", "317", "357", "165"], answer: "157" },
+      { question: "প্রথম কম্পিউটার প্রোগ্রামার কে?", options: ["বিল গেটস", "অ্যাডা লাভলেস", "চার্লস ব্যাবেজ", "অ্যালান টিউরিং"], answer: "অ্যাডা লাভলেস" },
+      { question: "RAM কী ধরনের মেমোরি?", options: ["পার্মানেন্ট", "অস্থায়ী", "ফ্ল্যাশ", "রোমান্টিক"], answer: "অস্থায়ী" },
+      { question: "CPU এর সম্পূর্ণরূপ কী?", options: ["Central Processing Unit", "Control Process Unit", "Central Print Unit", "Computer Processing Unit"], answer: "Central Processing Unit" },
+      { question: "একটি কিলোবাইট (KB) সমান কত বাইট?", options: ["512", "1000", "1024", "2048"], answer: "1024" },
+      { question: "Wi-Fi এর পূর্ণরূপ কী?", options: ["Wireless Fidelity", "Wired Finder", "Wide Fiber", "Wireless Function"], answer: "Wireless Fidelity" },
+      { question: "বাংলাদেশে প্রথম মোবাইল ফোন সার্ভিস চালু হয় কবে?", options: ["১৯৯০", "১৯৯৩", "১৯৯৭", "২০০১"], answer: "১৯৯৩" },
+      { question: "URL এর পূর্ণরূপ কী?", options: ["Universal Resource Locator", "Uniform Resource Locator", "Unified Resource Link", "Unique Resource Locator"], answer: "Uniform Resource Locator" },
+      { question: "JPEG ফাইল কী ধরনের?", options: ["ভিডিও", "ছবি", "ডকুমেন্ট", "অডিও"], answer: "ছবি" },
+      { question: "ডকুমেন্ট লেখার জন্য কোন সফটওয়্যারটি ব্যবহৃত হয়?", options: ["MS Excel", "MS Word", "PowerPoint", "Photoshop"], answer: "MS Word" },
+      { question: "বাংলাদেশের প্রথম সার্চ ইঞ্জিন কোনটি?", options: ["SearchBD", "Pipilika", "BanglaSearch", "BangFinder"], answer: "Pipilika" },
+      { question: "DNS এর কাজ কী?", options: ["ডেটা সংরক্ষণ", "নাম থেকে আইপি খোঁজা", "ইমেইল পাঠানো", "ওয়েব ডিজাইন"], answer: "নাম থেকে আইপি খোঁজা" },
+      { question: "HTML কোন প্রকার ভাষা?", options: ["প্রোগ্রামিং", "মার্কআপ", "স্ক্রিপ্টিং", "অপারেটিং"], answer: "মার্কআপ" },
+      { question: "IP এর পূর্ণরূপ কী?", options: ["Internet Process", "Internet Protocol", "Intranet Program", "Interface Protocol"], answer: "Internet Protocol" },
+      { question: "Google প্রতিষ্ঠিত হয় কবে?", options: ["১৯৯৫", "১৯৯৬", "১৯৯৮", "২০০০"], answer: "১৯৯৮" },
+      { question: "Bit এর পূর্ণরূপ কী?", options: ["Binary Digit", "Binary Transfer", "Base Input", "Byte Integer"], answer: "Binary Digit" },
+      { question: "কম্পিউটারের পিতা কাকে বলা হয়?", options: ["বিল গেটস", "স্টিভ জবস", "চার্লস ব্যাবেজ", "অ্যালান টিউরিং"], answer: "চার্লস ব্যাবেজ" },
+      { question: "বাংলাদেশে সবচেয়ে বেশি ব্যবহৃত অপারেটিং সিস্টেম কোনটি?", options: ["Linux", "MacOS", "Windows", "Android"], answer: "Windows" },
+      { question: "একটি ইমেইল ঠিকানায় '@' চিহ্নের কাজ কী?", options: ["ব্যবহারকারী আলাদা করা", "ডোমেইন চিহ্নিত করা", "পাঠানো", "সাবধানে রাখা"], answer: "ব্যবহারকারী আলাদা করা" },
+      { question: "Ctrl + C কী শর্টকাট?", options: ["Cut", "Copy", "Close", "Clear"], answer: "Copy" },
+      { question: "QR কোডের পূর্ণরূপ কী?", options: ["Quick Response", "Quick Reply", "Quick Recording", "Quick Read"], answer: "Quick Response" },
+      { question: "Python কী ধরনের ভাষা?", options: ["Low-level", "Markup", "High-level", "Assembler"], answer: "High-level" },
+      { question: "বাংলাদেশের জাতীয় আইসিটি নীতি সর্বপ্রথম কবে প্রণীত হয়?", options: ["২০০২", "২০০৫", "২০০৯", "২০১৫"], answer: "২০০২" },
+      { question: "কম্পিউটারে তথ্য প্রক্রিয়াকরণ কোথায় হয়?", options: ["RAM", "CPU", "HDD", "GPU"], answer: "CPU" },
+      { question: "কম্পিউটার ভাইরাস কী?", options: ["হার্ডওয়্যার", "মেমোরি", "নেটওয়ার্ক", "দুর্বিনীত প্রোগ্রাম"], answer: "দুর্বিনীত প্রোগ্রাম" },
+      { question: "বাংলাদেশের নিজস্ব কৃত্রিম উপগ্রহের নাম কী?", options: ["সোনার বাংলা", "বঙ্গবন্ধু-১", "ডেল্টা", "রূপসী বাংলা"], answer: "বঙ্গবন্ধু-১" }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function startQuiz() {
+      showQuestion();
+    }
+
+    function showQuestion() {
+      const quiz = document.getElementById("quiz");
+      const q = quizData[currentQuestion];
+
+      let optionsHtml = "";
+      q.options.forEach(option => {
+        optionsHtml += `<button class="option" onclick="checkAnswer('${option}')">${option}</button>`;
+      });
+
+      quiz.innerHTML = `
+        <h2>${q.question}</h2>
+        ${optionsHtml}
+      `;
+    }
+
+    function checkAnswer(selected) {
+      if (selected === quizData[currentQuestion].answer) {
+        score++;
+      }
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      const quiz = document.getElementById("quiz");
+      quiz.innerHTML = `
+        <h2>তোমার স্কোর: ${score}/${quizData.length}</h2>
+        <button onclick="restartQuiz()">পুনরায় শুরু</button>
+      `;
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      startQuiz();
+    }
+  </script>
+</body>
+</html>
